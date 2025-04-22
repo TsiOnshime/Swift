@@ -1,0 +1,86 @@
+.signin-page {
+    background-color: #e8f9f1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signin-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .signin-box h2 {
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    margin-bottom: 25px;
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  .input-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1rem;
+  }
+  
+  .forgot-password {
+    text-align: right;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+  
+  .forgot-password a {
+    color: #2ebd7f;
+    text-decoration: none;
+  }
+  
+  .login-btn {
+    background-color: #2ebd7f;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .signup-text {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #444;
+  }
+  
+  .signup-text a {
+    color: #2ebd7f;
+    text-decoration: none;
+    margin-left: 5px;
+  }
+  
