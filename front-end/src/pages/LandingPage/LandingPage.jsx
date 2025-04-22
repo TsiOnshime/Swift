@@ -1,29 +1,30 @@
 import React from 'react';
 import './LandingPage.css';
 import scooterHome from '../../assets/scooterImage.png'
-import Navbar from '../../components/NavBar';
+import { FaUserPlus, FaSignInAlt } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
     <>
-    <Navbar/>
      <div className="homepage">
       <div className="homepage-text">
         <h1><span className="highlight">Swift E-Scooter</span></h1>
         <p>Explore your city with ease. Rent an e-scooter today!</p>
         <div className="buttons">
         <Link to="/signup">
-        <button className="sign-up">
-            <i className="fas fa-user-plus"></i> Sign Up
+          <button className="sign-up">
+            <FaUserPlus /> Sign Up
           </button>
         </Link>
-          
-        <Link to="/signup">
-        <button className="sign-in">
-            <i className="fas fa-sign-in-alt"></i> Sign In
+
+        <Link to="/signin">
+          <button className="sign-in">
+            <FaSignInAlt /> Sign In
           </button>
         </Link>
+
  
         </div>
       </div>

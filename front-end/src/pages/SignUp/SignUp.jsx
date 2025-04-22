@@ -53,7 +53,8 @@ const Register = () => {
 
 
           <p className="terms">
-            By signing up, I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a>
+            By signing up, I agree with the <a href="/terms" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+            & <a href="/Privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
           </p>
 
           <button type="submit" className="register-btn">Register</button>

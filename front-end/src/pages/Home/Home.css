@@ -1,0 +1,46 @@
+.scan-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .scan-title {
+    color: #28c28b;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .scan-instructions {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .scan-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #28c28b;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .scan-button:hover {
+    background-color: #24af7e;
+  }
+  
+  .scan-icon {
+    margin-right: 8px;
+  }
+  
