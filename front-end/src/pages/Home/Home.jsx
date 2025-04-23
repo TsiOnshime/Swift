@@ -3,6 +3,7 @@ import "./Home.css";
 import { FaQrcode } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../../components/NavBar";
 
 const Home = () => {
   const [isScanning, setIsScanning] = useState(false);
@@ -20,7 +21,9 @@ const Home = () => {
   };
 
   return (
-    <div className="scan-container">
+    <>
+    <Navbar/>
+     <div className="scan-container">
       <h2 className="scan-title">Scan QR Code to Unlock E-Scooter</h2>
       <ol className="scan-instructions">
         <li>Open the e-scooter website on your smartphone</li>
@@ -46,6 +49,8 @@ const Home = () => {
 
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
+    </>
+   
   );
 };
 
