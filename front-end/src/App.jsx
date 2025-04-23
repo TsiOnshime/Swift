@@ -6,7 +6,8 @@ import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
 import Home from './pages/Home/Home'
 import ForgotPassword from './pages/ForgetPassword/ForgetPassword';
-import PackageSelection from './pages/Package/PackageSelection'
+import PackageSelection from './pages/Package/PackageSelection';
+import UserProfile from './pages/UserProfile/UserProfile';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/select-package' element={<PackageSelection />} />
+          <Route path='/profile' element={<UserProfile />} />
         </Routes>
       </BrowserRouter>
     );
