@@ -64,8 +64,8 @@ module.exports.loginAdmin = async (req, res, next) => {
 };
 
 module.exports.getAdminProfile = async (req, res, next) => {
-  res.status(200).json(req.admin);
-  console.log(req);
+  res.status(200).json(req.user);
+  
 };
 
 module.exports.logoutAdmin = async (req, res, next) => {

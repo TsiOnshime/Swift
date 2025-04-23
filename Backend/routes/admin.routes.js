@@ -30,12 +30,17 @@ router.post(
 );
 
 router.get(
-  "/profile",
+  "/profile",authMiddleware.authUser,
   authMiddleware.authAdmin,
   adminController.getAdminProfile
 );
 
-router.get("/logout", authMiddleware.authAdmin, adminController.logoutAdmin);
+router.get(
+  "/logout",
+  authMiddleware.authUser,
+  authMiddleware.authAdmin,
+  adminController.logoutAdmin
+);
 
 // After admin is added
 // (Admin) Add a new scooter
@@ -47,6 +52,7 @@ router.put("/:id", authMiddleware.authUser, authMiddleware.authAdmin, adminContr
 // (Admin) Delete a scooter
 router.delete(
   "/:id",
+  authMiddleware.authUser,
   authMiddleware.authAdmin,
   adminController.deleteScooter
 );
@@ -54,6 +60,7 @@ router.delete(
 // (Admin) Update battery level
 router.patch(
   "/:qrCode/battery",
+  authMiddleware.authUser,
   authMiddleware.authAdmin,
   adminController.updateBatteryLevel
 );
