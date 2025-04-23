@@ -6,7 +6,7 @@ import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
 import Home from './pages/Home/Home'
 import ForgotPassword from './pages/ForgetPassword/ForgetPassword';
-
+import PackageSelection from './pages/Package/PackageSelection'
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Route path='/signin' element={<SignIn />} />
           <Route path='/home' element={<Home />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/select-package' element={<PackageSelection />} />
         </Routes>
       </BrowserRouter>
     );

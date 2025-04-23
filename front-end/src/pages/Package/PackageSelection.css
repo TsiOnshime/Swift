@@ -1,0 +1,119 @@
+.package-page {
+    background-color: #e8f9f1;
+    min-height: 100vh;
+    padding: 30px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .package-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scroll-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .scroll-buttons button {
+    background-color: #2ebd7f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .package-cards {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+  }
+  
+  .package-cards::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+  
+  .package-card {
+    background: #f5fdfb;
+    flex: 0 0 auto;
+    min-width: 240px;
+    scroll-snap-align: start;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .package-card:hover {
+    background-color: #d7f3ec;
+    transform: translateY(-5px);
+  }
+  
+  .pkg-card-element {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .package-card img {
+    width: 70%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .select-btn {
+    background-color: #2ebd7f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .package-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .custom-time {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .custom-time label {
+    font-weight: 600;
+  }
+  
+  .custom-time input[type="text"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .pay-btn {
+    margin-top: 20px;
+    background-color: #2ebd7f;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
