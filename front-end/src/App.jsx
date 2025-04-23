@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { UserProvider } from "./context/Usercontext";
+
 
 import LandingPage from './pages/LandingPage/LandingPage';
 import SignUp from './pages/SignUp/SignUp';
@@ -8,11 +10,12 @@ import Home from './pages/Home/Home'
 import ForgotPassword from './pages/ForgetPassword/ForgetPassword';
 import PackageSelection from './pages/Package/PackageSelection';
 import UserProfile from './pages/UserProfile/UserProfile';
-
+import EditProfile from './pages/EditProfile/EditProfile';
 
 function App() {
     return (
-      <BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
         <Routes>
           <Route path='/' element={<LandingPage />} />
           <Route path='/signup' element={<SignUp />} />
@@ -21,8 +24,11 @@ function App() {
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/select-package' element={<PackageSelection />} />
           <Route path='/profile' element={<UserProfile />} />
+          <Route path='/edit-profile' element={<EditProfile />} />
         </Routes>
       </BrowserRouter>
+      </UserProvider>
+      
     );
   }
   
