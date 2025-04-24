@@ -1,0 +1,53 @@
+  /* Container */
+  .verify-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #e0f7e9, #d9f3ff);
+  }
+  
+  /* Box */
+  .verify-box {
+    background-color: #fff;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .verify-box h2 {
+    font-size: 24px;
+    color: #1e8847;
+    margin-bottom: 10px;
+  }
+  
+  .verify-box p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Spinner */
+  .spinner {
+    border: 5px solid #e0e0e0;
+    border-top: 5px solid #1e8847;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Animations */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  

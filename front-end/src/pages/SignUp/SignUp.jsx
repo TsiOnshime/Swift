@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import "./SignUp.css";
-import NavBar from '../../components/NavBar'
 import { MdElectricScooter } from 'react-icons/md'; 
 import { FaArrowLeft } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
@@ -16,7 +15,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  
+
 
   const navigate = useNavigate();
 
