@@ -67,7 +67,7 @@ const Register = () => {
       
         <div className="content">
           <h2>Let's Get Started</h2>
-          <MdElectricScooter style={{ fontSize: '160px', color: 'green' }} />
+          <MdElectricScooter style={{ fontSize: '160px', color: 'black' }} />
         </div>
       </div>
 

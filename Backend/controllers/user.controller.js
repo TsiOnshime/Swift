@@ -70,3 +70,21 @@ module.exports.logoutUser = async (req, res, next) => {
 
   res.status(200).json({ message: "Logged out" });
 };
+
+module.exports.updateUserProfile = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  const { fullname, email, profileImage } = req.body;
+  const userId = req.user._id;
+
+  const firstname = fullname?.firstname;
+  const lastname = fullname?.lastname;
+
+  const updatedUser = await userService.updateUser(userId, firstname, lastname, email, profileImage);
+  if (!updatedUser) {
+    return res.status(400).json({ message: "User not found" });
+  }
+  return res.status(200).json(updatedUser);
+};

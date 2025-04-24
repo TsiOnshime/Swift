@@ -20,3 +20,18 @@ module.exports.createUser = async ({
 
   return user;
 };
+
+module.exports.updateUser = async (id, firstname, lastname, email, profileImage) => {
+  if (!id) throw new Error("User ID is required");
+
+  const user = await userModel.findById(id);
+  if (!user) throw new Error("User not found");
+
+  if (firstname) user.fullname.firstname = firstname;
+  if (lastname) user.fullname.lastname = lastname;
+  if (email) user.email = email;
+  if (profileImage) user.profileImage = profileImage;
+
+  await user.save();
+  return user;
+};

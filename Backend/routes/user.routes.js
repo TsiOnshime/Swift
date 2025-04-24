@@ -31,6 +31,27 @@ router.post(
 
 router.get("/profile", authMiddleware.authUser, userController.getUserProfile);
 
+router.put(
+  "/edit-profile",
+  authMiddleware.authUser,
+  [
+    body("fullname.firstname")
+      .optional()
+      .isLength({ min: 3 })
+      .withMessage("First name must be at least 3 characters long"),
+    body("fullname.lastname")
+      .optional()
+      .isLength({ min: 3 })
+      .withMessage("Last name must be at least 3 characters long"),
+    body("email")
+      .optional()
+      .isEmail()
+      .withMessage("Invalid Email"),
+    // You can add password validation if you want to allow password change
+  ],
+  userController.updateUserProfile
+);
+
 router.get("/logout", authMiddleware.authUser, userController.logoutUser);
 
 module.exports = router;

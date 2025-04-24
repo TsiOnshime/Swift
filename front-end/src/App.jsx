@@ -8,6 +8,7 @@ import Home from './pages/Home/Home'
 import ForgotPassword from './pages/ForgetPassword/ForgetPassword';
 import PackageSelection from './pages/Package/PackageSelection';
 import UserProfile from './pages/UserProfile/UserProfile';
+import EditProfile from './pages/EditProfile/EditProfile';
 import MapPage from './pages/Map/MapPage';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/select-package' element={<PackageSelection />} />
           <Route path='/profile' element={<UserProfile />} />
+          <Route path='/edit-profile' element={<EditProfile />} />
           <Route path='/map' element={<MapPage />} />
         </Routes>
       </BrowserRouter>

@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
     enum: ["pending", "completed", "failed"],
     default: "pending",
   },
+  profileImage: {
+    type: String,
+    default: "", // or set a default avatar path if you want
+  },
 });
 userSchema.methods.startRental = function (scooterId) {
   this.rentedScooter = scooterId;

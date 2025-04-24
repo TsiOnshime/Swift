@@ -1,16 +1,18 @@
+
 .register-container {
     display: flex;
     height: 100vh;
     font-family: sans-serif;
     padding-top: 30px;
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
+    background-color: white;
   }
   
   /* Left Panel */
   .left-section {
     width: 50%;
-    background-color: #a5d6a7;
+    background-color: #77D1A5;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -44,7 +46,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #f9f9f9;
+    background: white;
   }
   
   .form-box {
@@ -86,7 +88,7 @@
   .register-btn {
     width: 100%;
     padding: 0.8rem;
-    background-color: #4caf50;
+    background-color: #77D1A5;
     color: white;
     font-weight: bold;
     border: none;
@@ -121,7 +123,7 @@
   }
 
   .login-link a{
-    color: #2ebd7f;
+    color: #77D1A5;
     text-decoration: none;
   }
   
