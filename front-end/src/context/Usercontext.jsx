@@ -1,6 +1,6 @@
 // src/context/UserContext.js
 import { createContext, useContext, useState } from "react";
-import defaultImage from "../assets/selam.jpg";
+import defaultImage from "../assets/avatar.png";
 
 const UserContext = createContext();
 

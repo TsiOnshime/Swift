@@ -8,11 +8,11 @@ import { PiMotorcycleBold } from "react-icons/pi";
 import { TbRoute } from "react-icons/tb";
 import { FaCoins, FaPen } from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
-import { useUser } from "../../context/Usercontext"; 
+import { useUser } from "../../context/UserContext"; 
 
 const UserProfile = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useUser(); // ✅ Use user from context
+  const { user, setUser } = useUser(); // Use user from context
 
   const [rides, setRides] = useState([]);
 

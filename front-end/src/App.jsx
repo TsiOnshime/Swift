@@ -1,8 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { UserProvider } from "./context/Usercontext";
-
-
+import { UserProvider } from "./context/UserContext";
 import LandingPage from './pages/LandingPage/LandingPage';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
@@ -28,7 +26,6 @@ function App() {
         </Routes>
       </BrowserRouter>
       </UserProvider>
-      
     );
   }
   

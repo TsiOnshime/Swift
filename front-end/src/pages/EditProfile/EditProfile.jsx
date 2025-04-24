@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./EditProfile.css";
 import { FiArrowLeft, FiEyeOff } from "react-icons/fi";
-import { useUser } from "../../context/Usercontext";
+import { useUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import defaultImage from "../../assets/avatar.png"; 
 
 const EditProfile = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
 
-  // Pre-fill the form with user data
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -21,7 +21,7 @@ const EditProfile = () => {
       firstName: user.firstName || "",
       lastName: user.lastName || "",
       email: user.email || "",
-      password: "", 
+      password: "",
     });
   }, [user]);
 
@@ -35,9 +35,31 @@ const EditProfile = () => {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
-      // You can handle password update with backend later
     }));
-    navigate("/profile"); 
+    navigate("/profile");
+  };
+
+  //  Handle image upload
+  const handleUpdatePicture = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setUser((prev) => ({
+        ...prev,
+        profileImage: reader.result,
+      }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  //  Handle delete image
+  const handleDeletePicture = () => {
+    setUser((prev) => ({
+      ...prev,
+      profileImage: defaultImage,
+    }));
   };
 
   return (
@@ -51,8 +73,18 @@ const EditProfile = () => {
         <div className="profile-section">
           <img src={user.profileImage} alt="Profile" className="profile-img" />
           <div className="picture-buttons">
-            <button className="btn-outline">Update picture</button>
-            <button className="btn-outline">Delete picture</button>
+            <label className="btn-outline">
+              Update picture
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleUpdatePicture}
+                style={{ display: "none" }}
+              />
+            </label>
+            <button className="btn-outline" onClick={handleDeletePicture}>
+              Delete picture
+            </button>
           </div>
         </div>
 
