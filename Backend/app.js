@@ -8,7 +8,7 @@ const connectToDb = require("./db/db");
 const userRoutes = require("./routes/user.routes");
 const scooterRoutes = require("./routes/scooter.routes");
 const adminRoutes = require("./routes/admin.routes");
-const paymentRoutes = require("./routes/payment.routes");
+// const paymentRoutes = require("./routes/payment.routes");
 
 connectToDb();
 
@@ -24,6 +24,6 @@ app.get("/", (req, res) => {
 app.use("/users", userRoutes);
 app.use("/scooters", scooterRoutes);
 app.use("/admin", adminRoutes);
-app.use("/payments", paymentRoutes);
+// app.use("/payments", paymentRoutes);
 
 module.exports = app;
