@@ -9,7 +9,7 @@ import ForgotPassword from './pages/ForgetPassword/ForgetPassword';
 import PackageSelection from './pages/Package/PackageSelection';
 import UserProfile from './pages/UserProfile/UserProfile';
 import EditProfile from './pages/EditProfile/EditProfile';
-
+import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
 function App() {
     return (
       <UserProvider>
@@ -23,6 +23,8 @@ function App() {
           <Route path='/select-package' element={<PackageSelection />} />
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/edit-profile' element={<EditProfile />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
+
         </Routes>
       </BrowserRouter>
       </UserProvider>

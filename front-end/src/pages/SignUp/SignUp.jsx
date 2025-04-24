@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./SignUp.css";
-import NavBar from '../../components/NavBar'
 import { MdElectricScooter } from 'react-icons/md'; 
 import { FaArrowLeft } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
@@ -27,7 +26,8 @@ const Register = () => {
   };
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+
+const handleSubmit = (e) => {
   e.preventDefault();
 
   const { firstName, lastName, email, password } = formData;
@@ -35,20 +35,11 @@ const Register = () => {
     toast.error('Please fill in all fields');
     return;
   }
-    toast.success('Successfully registered! Redirecting...');
-    setTimeout(() => {
-      navigate('/home');
-    }, 2000);
-    // BACKEND TODO: Send formData to the backend API
-    /*
-      TODO (backend):
-      1. Validate all fields (length, format, email uniqueness, etc.)
-      2. Hash the password securely (bcrypt recommended)
-      3. Save the user to the database (firstName, lastName, email, hashed password)
-      4. Return a success message and possibly a token/session
-      5. Handle duplicate emails / server errors
-    */
-  navigate('/home');
+
+  // TODO: Send to backend to register and send verification email
+  toast.info('Verify your email. A confirmation has been sent to your email address.');
+
+  // Don't redirect yet — wait for them to verify
 };
 
 const handleSocialClick = (provider) => {
