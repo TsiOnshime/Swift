@@ -43,6 +43,14 @@ const userSchema = new mongoose.Schema({
     enum: ["pending", "completed", "failed"],
     default: "pending",
   },
+  //selam
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+  }
 });
 userSchema.methods.startRental = function (scooterId) {
   this.rentedScooter = scooterId;

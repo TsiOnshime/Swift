@@ -3,6 +3,7 @@ const router = express.Router();
 const { body } = require("express-validator");
 const userController = require("../controllers/user.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
+const userModel = require("../models/user.model");
 
 router.post(
   "/register",
@@ -33,4 +34,24 @@ router.get("/profile", authMiddleware.authUser, userController.getUserProfile);
 
 router.get("/logout", authMiddleware.authUser, userController.logoutUser);
 
+//selam
+router.get("/verify-email", userController.verifyEmail);
+
+router.delete("/delete-by-email/:email", async (req, res) => {
+  try {
+    const email = req.params.email;
+    const result = await userModel.findOneAndDelete({ email });
+
+    if (!result) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "User deleted successfully", deletedUser: result });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;
+
+
