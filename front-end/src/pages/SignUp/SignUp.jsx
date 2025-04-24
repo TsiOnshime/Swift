@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./SignUp.css";
 import { MdElectricScooter } from 'react-icons/md'; 
 import { FaArrowLeft } from 'react-icons/fa';
@@ -7,55 +7,55 @@ import { FaApple } from 'react-icons/fa';
 import { Link,  useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import axios from 'axios';
+import { UserDataContext } from "../../context/UserContext";
 
 const Register = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-  });
-  
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value
-    });
-  };
+
   const navigate = useNavigate();
 
+  const { user, setUser } = useContext(UserDataContext);
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newUser = {
+      fullname: {
+        firstname: firstName,
+        lastname: lastName,
+      },
+      email,
+      password,
+    };
 
-  const { firstName, lastName, email, password } = formData;
-  if (!firstName || !lastName || !email || !password) {
-    toast.error('Please fill in all fields');
-    return;
-  }
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/users/register`,
+        newUser
+      );
 
-  // TODO: Send to backend to register and send verification email
-  toast.info('Verify your email. A confirmation has been sent to your email address.');
-
-  // Don't redirect yet — wait for them to verify
-};
-
-const handleSocialClick = (provider) => {
-  //  BACKEND TODO: Setup OAuth endpoints
-    /*
-      TODO (backend):
-      1. Configure OAuth for Google and Apple:
-         - Google: Client ID + Secret (Google Console)
-         - Apple: Sign in with Apple setup
-      2. Use Firebase Auth or your backend to handle OAuth tokens
-      3. Return user data & auth token from backend
-      4. Frontend can use that token to log in the user
-    */
-  toast.info(`Sign up with ${provider} is coming soon!`);
-};
-
+      if (response.status === 201) {
+        const data = response.data;
+        setUser(data.user);
+        localStorage.setItem("token", data.token);
+        navigate("/signin");
+      }
+      setEmail("");
+      setFirstName("");
+      setLastName("");
+      setPassword("");
+    } catch (err) {
+      toast.error(
+        err.response?.data?.message ||
+        err.response?.data?.errors?.[0]?.msg ||
+        "Registration failed"
+      );
+    }
+  };
   return (
     <>
     <div className="register-container">
@@ -77,23 +77,47 @@ const handleSocialClick = (provider) => {
           <div className="form-group double">
             <div>
               <label htmlFor="firstName">First Name</label>
-              <input id="firstName" type="text" placeholder="Input first name" value={formData.firstName} onChange={handleChange}/>
+              <input
+                id="firstName"
+                type="text"
+                placeholder="Input first name"
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
+              />
             </div>
 
             <div>
               <label htmlFor="lastName">Last Name</label>
-              <input id="lastName" type="text" placeholder="Input last name" value={formData.lastName} onChange={handleChange} />
+              <input
+                id="lastName"
+                type="text"
+                placeholder="Input last name"
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
+              />
             </div>
           </div>
 
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input id="email" type="email" placeholder="example.email@gmail.com" value={formData.email} onChange={handleChange}/>
+            <input
+              id="email"
+              type="email"
+              placeholder="example.email@gmail.com"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
           </div>
 
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input id="password" type="password" placeholder="Enter at least 8+ characters" value={formData.password} onChange={handleChange}/>
+            <input
+              id="password"
+              type="password"
+              placeholder="Enter at least 8+ characters"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
           </div>
 
 
@@ -103,15 +127,7 @@ const handleSocialClick = (provider) => {
           </p>
 
           <button type="submit" className="register-btn" >Register</button>
-        </form>
-
-          <div className="or-section">OR</div>
-           {/* TODO: Connect Google and Apple sign-in with backend or Firebase OAuth */}
-          <div className="social-buttons">
-            <button className="google" onClick={() => handleSocialClick('Google')}><FcGoogle/></button>
-            <button className="apple"  onClick={() => handleSocialClick('Apple')}><FaApple /></button>
-          </div>
-
+        </form> 
           <p className="login-link">
             Already have an account? <Link to="/signin">Log in here</Link>
           </p>

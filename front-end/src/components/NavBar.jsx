@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="nav-links">
         <Link to="/home" className="home-link">Home</Link>
         <Link to="/about" className="about-link">About</Link>
-        
+        <Link to="/map" className="map-link">Map</Link>
         
         <Link to="/profile" className="icon-button">
         <FaUserCircle style={{ fontSize: '30px', color: '#2f855a' }} />
