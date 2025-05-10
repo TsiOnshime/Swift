@@ -1,0 +1,29 @@
+import React, { createContext, useContext, useEffect, useState } from "react";
+
+const ThemeContext = createContext();
+
+export function ThemeProvider({ children }) {
+
+  const [theme, setTheme] = useState(() => {
+
+    return "dark";
+  });
+
+  useEffect(() => {
+    document.body.className = theme === "dark" ? "bg-dark text-light" : "bg-light text-dark";
+
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export function useTheme() {
+  return useContext(ThemeContext);
+}
+
