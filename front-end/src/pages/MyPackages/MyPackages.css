@@ -1,0 +1,88 @@
+.my-packages-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 32px 20px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+}
+
+.my-packages-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2ebd7f;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.my-packages-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.my-package-card {
+  background: #f5fdfb;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.my-package-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 6px 18px rgba(44, 62, 80, 0.13);
+  background: #e8f9f1;
+}
+
+.my-package-status {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: #e8f9f1;
+  color: #2ebd7f;
+}
+
+.my-package-status.expired {
+  background: #ffeaea;
+  color: #e53e3e;
+}
+
+.my-package-label {
+  font-weight: 600;
+  color: #2f855a;
+  margin-right: 6px;
+}
+
+.my-package-value {
+  color: #222;
+}
+
+.my-package-remaining {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2196f3;
+}
+
+@media (max-width: 700px) {
+  .my-packages-container {
+    padding: 16px 4vw;
+  }
+  .my-package-card {
+    padding: 16px 10px;
+  }
+  .my-packages-title {
+    font-size: 1.4rem;
+  }
+}
