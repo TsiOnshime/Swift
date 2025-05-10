@@ -1,4 +1,4 @@
-# E-Scooter Rental Backend API
+# Swift Mobility Backend API
 
 A robust RESTful API for user and admin management, scooter rental, payments, and rewards.
 
