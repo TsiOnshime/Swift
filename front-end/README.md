@@ -81,7 +81,7 @@ src/
 1. **Clone the repository:**
 
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/TsiOnshime/Swift
    cd front-end
    ```
 
@@ -161,11 +161,6 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ---
 
-## License
-
-MIT
-
----
 
 ## Contact
 
