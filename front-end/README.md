@@ -7,7 +7,7 @@ A modern, production-ready React web application for the Swift Mobility e-scoote
 ## Table of Contents
 
 - [Features](#features)
-- [Screenshots](#screenshots)
+
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
