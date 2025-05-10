@@ -1,4 +1,4 @@
-# 🚀 Swift Mobility E-Scooter Frontend
+#  Swift Mobility E-Scooter Frontend🛴
 
 A modern, production-ready React web application for the Swift Mobility e-scooter rental platform. This frontend empowers users to register, rent scooters, manage profiles, redeem and send tokens, and interact with a blockchain-powered rewards system—all through a seamless, mobile-first interface.
 
@@ -171,4 +171,4 @@ For questions or support, please open an issue or contact the maintainers:
 
 ---
 
-> **Swift Mobility — Redefining Urban Transport with AI and Web3 Innovation** 🚀🛴🌍
+> **Swift Mobility — Redefining Urban Transport with AI and Web3 Innovation** 
