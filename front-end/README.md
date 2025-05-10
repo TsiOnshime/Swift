@@ -37,11 +37,7 @@ A modern, production-ready React web application for the Swift Mobility e-scoote
 
 ---
 
-## Screenshots
 
-> _Add screenshots or GIFs here to showcase the UI and features._
-
----
 
 ## Tech Stack
 
@@ -175,7 +171,6 @@ MIT
 
 For questions or support, please open an issue or contact the maintainers:
 
-- [tsionshimelis900@gmail.com](mailto:tsionshimelis900@gmail.com)
 - [yordabsa@gmail.com](mailto:yordabsa@gmail.com)
 - [selamshimeles9@gmail.com](mailto:selamshimeles9@gmail.com)
 
