@@ -11,7 +11,7 @@ A modern, production-ready React web application for the Swift Mobility e-scoote
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
+- [Environment Variables](#⚙️-environment-variables)
 - [Available Scripts](#available-scripts)
 - [Theming](#theming)
 - [Integration](#integration)
@@ -110,7 +110,7 @@ src/
 
 ---
 
-## ⚙️ Environment Variables
+ ## ⚙️ Environment Variables
 
 Create a `.env` file in the root directory with:
 
