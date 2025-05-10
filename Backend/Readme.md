@@ -61,7 +61,7 @@ A robust RESTful API for user and admin management, scooter rental, payments, an
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/TsiOnshime/Swift.git
    cd Backend
    ```
 
