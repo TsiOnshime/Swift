@@ -1,0 +1,104 @@
+.profile-bg {
+  background: linear-gradient(120deg, #e8f9f1 60%, #c0ead5 100%);
+  min-height: 100vh;
+}
+
+.bg-dark.profile-bg {
+  background: linear-gradient(135deg, #23272b 70%, #181a1b 100%) !important;
+}
+
+.header-image {
+  width: 100%;
+  height: 190px;
+  background-image: url("../../assets/scootersbg.png");
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 16px rgba(44, 62, 80, 0.13);
+  background: #e8f9f1;
+  margin-bottom: 0.5rem;
+}
+
+.card {
+  border-radius: 1.5rem !important;
+}
+
+.bg-secondary,
+.bg-secondary.text-light {
+  background: #23272b !important;
+  color: #e6f9f0 !important;
+}
+
+.bg-white,
+.bg-white.text-dark {
+  background: #fff !important;
+  color: #1e6642 !important;
+}
+
+.btn-outline-success {
+  border-radius: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn-success {
+  border-radius: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #28c28b 60%, #1e6642 100%);
+  border: none;
+}
+
+.bg-light {
+  background: #f6fff9 !important;
+}
+
+.bg-dark .bg-light {
+  background: #23272b !important;
+  color: #e6f9f0 !important;
+}
+
+.bg-dark .card {
+  background: #23272b !important;
+  color: #e6f9f0 !important;
+}
+
+.bg-dark .btn-outline-success {
+  color: #e6f9f0;
+  border-color: #28c28b;
+}
+.bg-dark .btn-outline-success:hover {
+  background: #28c28b;
+  color: #fff;
+  border-color: #28c28b;
+}
+
+.bg-dark .btn-success {
+  background: linear-gradient(90deg, #28c28b 60%, #164f32 100%);
+  color: #fff;
+}
+
+.bg-dark .text-secondary {
+  color: #b2dfc7 !important;
+}
+
+@media (max-width: 600px) {
+  .header-image {
+    height: 120px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  .card {
+    border-radius: 1rem !important;
+  }
+  .profile-pic {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
