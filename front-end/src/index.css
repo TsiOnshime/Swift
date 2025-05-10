@@ -1,0 +1,38 @@
+:root {
+  --bg-color: #c0ead5;
+  --text-color: #181a1b;
+  --nav-bg: #f0f0f0;
+  --nav-text: #258555;
+  --primary-color: #28c28b;
+  --button-text: #ffffff;
+  --tagline-color: #181a1b;
+  --secondary-color: #258555;
+}
+
+[data-theme='dark'] {
+  --bg-color: #181a1b;
+  --text-color: #e6f9f0;
+  --nav-bg: #23272b;
+  --nav-text: #7be6b8;
+  --primary-color: #2ebd7f;
+  --button-text: #181a1b;
+  --tagline-color: #e6f9f0;
+  --secondary-color: #1d6742;
+}
+
+[data-theme='dark'] ::placeholder {
+  color: #e6f9f0 !important;
+  opacity: 1 !important;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.6s ease, color 0.4s ease;
+}
+/* Override Bootstrap's .text-success color */
+.text-success {
+  color: #164f32 !important;
+}
