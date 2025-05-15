@@ -141,7 +141,7 @@ VITE_MINT_ADDRESS=<your_solana_token_mint>
 ## Integration
 
 - **Backend:**  
-  Connects to the [Swift Mobility Backend API]([./Backend/Readme.md](https://github.com/TsiOnshime/Swift/blob/master/Backend/Readme.md)) for authentication, scooter management, and payments.
+  Connects to the [Swift Mobility Backend API](https://github.com/TsiOnshime/Swift/blob/master/Backend/Readme.md) for authentication, scooter management, and payments.
 - **Blockchain:**  
   Integrates with Solana for token rewards and transfers.
 - **Payments:**  
