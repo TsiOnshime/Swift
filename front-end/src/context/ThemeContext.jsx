@@ -3,15 +3,15 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-
+  
   const [theme, setTheme] = useState(() => {
-
-    return "dark";
+    return localStorage.getItem("theme") || "light";
   });
 
   useEffect(() => {
     document.body.className = theme === "dark" ? "bg-dark text-light" : "bg-light text-dark";
-
+   
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
