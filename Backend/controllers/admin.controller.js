@@ -1,7 +1,7 @@
 import adminModel from "../models/admin.model.js";
 import * as adminService from "../services/admin.service.js";
 import { validationResult } from "express-validator";
-import blackListTokenModel from "../models/blackListToken.model.js";
+import blackListTokenModel from "../models/blacklistToken.model.js";
 
 export const registerAdmin = async (req, res, next) => {
   try {

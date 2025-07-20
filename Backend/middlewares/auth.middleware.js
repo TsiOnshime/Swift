@@ -1,7 +1,7 @@
 import userModel from "../models/user.model.js";
 import adminModel from "../models/admin.model.js";
 import jwt from "jsonwebtoken";
-import blackListTokenModel from "../models/blackListToken.model.js";
+import blackListTokenModel from "../models/blacklistToken.model.js";
 
 
 // Authentication: Attach user or admin to req.user
