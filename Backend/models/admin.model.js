@@ -1,8 +1,10 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 const { Schema } = mongoose;
-const adminSchema = new mongoose.Schema({
+
+const adminSchema = new Schema({
   fullname: {
     firstname: {
       type: String,
@@ -52,8 +54,6 @@ adminSchema.statics.hashPassword = async function (password) {
   return await bcrypt.hash(password, 10);
 };
 
-
 const Admin = mongoose.model("Admin", adminSchema);
 
-
-module.exports = Admin;
+export default Admin;

@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 
 const userSchema = new mongoose.Schema({
   fullname: {
@@ -47,6 +48,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "", // or set a default avatar path if you want
   },
+  verified: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+  },
+  walletAddress: {
+    type: String,
+    required: true, // or false if optional
+    unique: true,   // if you want each wallet only once
+  },
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date },
 });
 userSchema.methods.startRental = function (scooterId) {
   this.rentedScooter = scooterId;
@@ -80,4 +95,4 @@ userSchema.statics.hashPassword = async function (password) {
 
 const userModel = mongoose.model("user", userSchema);
 
-module.exports = userModel;
+export default userModel;

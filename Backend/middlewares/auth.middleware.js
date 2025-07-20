@@ -1,10 +1,11 @@
-const userModel = require("../models/user.model");
-const adminModel = require("../models/admin.model");
-const jwt = require("jsonwebtoken");
-const blackListTokenModel = require("../models/blackListToken.model");
+import userModel from "../models/user.model.js";
+import adminModel from "../models/admin.model.js";
+import jwt from "jsonwebtoken";
+import blackListTokenModel from "../models/blackListToken.model.js";
+
 
 // Authentication: Attach user or admin to req.user
-module.exports.authUser = async (req, res, next) => {
+export const authUser = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
   
   if (!token) return res.status(401).json({ message: "Unauthorized" });
@@ -31,7 +32,7 @@ module.exports.authUser = async (req, res, next) => {
 };
 
 // Authorization: Only allow admins
-module.exports.authAdmin = (req, res, next) => {
+export const authAdmin = (req, res, next) => {
 
   if (req.user && req.user.role === "admin") {
     return next();

@@ -1,57 +1,63 @@
-const express = require("express");
+import express from "express";
+import * as userController from "../controllers/user.controller.js";
+import * as authMiddleware from "../middlewares/auth.middleware.js";
+import Rental from "../models/rental.model.js";
+import { rewardUserForPackage } from "../controllers/user.controller.js";
+import { registerSchema, loginSchema, updateProfileSchema } from "../validators/user.validator.js";
+import { validateBody } from "../middlewares/validate.middleware.js";
+import rateLimit from "express-rate-limit";
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Only 5 attempts per 15 minutes per IP
+  message: "Too many login attempts. Please try again later.",
+});
+
 const router = express.Router();
-const { body } = require("express-validator");
-const userController = require("../controllers/user.controller");
-const authMiddleware = require("../middlewares/auth.middleware");
 
-router.post(
-  "/register",
-  [
-    body("email").isEmail().withMessage("Invalid Email"),
-    body("fullname.firstname")
-      .isLength({ min: 3 })
-      .withMessage("First name must be at least 3 characters long"),
-    body("password")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
-  ],
-  userController.registerUser
-);
+// Register
+router.post("/register", validateBody(registerSchema), userController.registerUser);
 
-router.post(
-  "/login",
-  [
-    body("email").isEmail().withMessage("Invalid Email"),
-    body("password")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
-  ],
-  userController.loginUser
-);
+
+// Login
+router.post("/login", validateBody(loginSchema),loginLimiter, userController.loginUser);
+
+// Update Profile
+router.put("/edit-profile", authMiddleware.authUser, userController.updateUserProfile);
 
 router.get("/profile", authMiddleware.authUser, userController.getUserProfile);
 
-router.put(
-  "/edit-profile",
-  authMiddleware.authUser,
-  [
-    body("fullname.firstname")
-      .optional()
-      .isLength({ min: 3 })
-      .withMessage("First name must be at least 3 characters long"),
-    body("fullname.lastname")
-      .optional()
-      .isLength({ min: 3 })
-      .withMessage("Last name must be at least 3 characters long"),
-    body("email")
-      .optional()
-      .isEmail()
-      .withMessage("Invalid Email"),
-    // You can add password validation if you want to allow password change
-  ],
-  userController.updateUserProfile
-);
-
 router.get("/logout", authMiddleware.authUser, userController.logoutUser);
 
-module.exports = router;
+router.get("/verify-email", userController.verifyEmail);
+
+router.get("/my-packages", authMiddleware.authUser, async (req, res) => {
+  try {
+    const rentals = await Rental.find({ user: req.user._id })
+      .populate("scooter")
+      .sort({ startTime: -1 });
+    res.json(rentals);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch packages" });
+  }
+});
+
+router.delete("/my-packages/:id", authMiddleware.authUser, async (req, res) => {
+  try {
+    const deleted = await Rental.findOneAndDelete({
+      _id: req.params.id,
+      user: req.user._id,
+    });
+    if (!deleted) return res.status(404).json({ error: "Package not found" });
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete package" });
+  }
+});
+
+router.post("/reward", rewardUserForPackage);
+
+router.post("/forgot-password", userController.forgotPassword);
+router.post("/reset-password", userController.resetPassword);
+
+export default router;

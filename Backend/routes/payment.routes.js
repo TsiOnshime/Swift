@@ -1,9 +1,20 @@
-// const express = require("express");
-// const router = express.Router();
-// const paymentController = require("../controllers/payment.controller");
-// const authMiddleware = require("../middlewares/auth.middleware");
+import express from "express";
+import {
+  createPaymentIntent,
+  confirmPayment,
+} from "../controllers/payment.controller.js";
+import { authUser } from "../middlewares/auth.middleware.js";
+import { validateBody } from "../middlewares/validate.middleware.js";
+import { confirmPaymentSchema } from "../validators/payment.validator.js";
 
-// router.post("/initiate", authMiddleware.authUser, paymentController.initiatePayment);
-// router.get("/callback", paymentController.paymentCallback);
+const router = express.Router();
 
-// module.exports = router;
+router.post("/create-payment-intent", createPaymentIntent);
+router.post(
+  "/confirm-payment",
+  authUser,
+  validateBody(confirmPaymentSchema),
+  confirmPayment
+);
+
+export default router;

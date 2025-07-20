@@ -1,0 +1,112 @@
+.footer {
+  background-color: #1d6742; /* Green background */
+  color: white;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  max-width: 1200px; /* Limit max width */
+  margin: 0 auto; /* Center footer content */
+  filter: blur(0.5px); /* Blur effect */
+}
+
+.footer-logo {
+  flex: 1 1 200px; /* Allow for flexible sizing */
+  margin-right: 20px; /* Space between sections */
+}
+
+.footer-logo h1 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.footer-links,
+.footer-support,
+.footer-contact {
+  flex: 1 1 200px; /* Allow for flexible sizing */
+  margin: 0 20px;
+  font-size: 0.7rem; /* Font size for links */
+}
+
+.footer-links h3,
+.footer-support h3,
+.footer-contact h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.footer-links ul,
+.footer-support ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links li,
+.footer-support li {
+  margin-bottom: 8px;
+}
+
+.footer-links a,
+.footer-support a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-support a:hover {
+  text-decoration: underline;
+}
+
+.footer-line {
+  height: 2px; /* Height of the line */
+  background-color: white; /* Line color */
+  margin: 10px 0; /* Space above and below the line */
+  
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.5rem; 
+  filter: blur(0.3px); 
+}
+
+.store-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.store-buttons a {
+  display: inline-block;
+  width: 120px; /* Adjust button size */
+}
+
+.store-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack items on smaller screens */
+    align-items: center; /* Center align items */
+  }
+
+  .footer-logo {
+    text-align: center; /* Center logo on mobile */
+    margin-bottom: 20px; /* Space below logo */
+  }
+
+  .footer-links,
+  .footer-support,
+  .footer-contact {
+    text-align: center; /* Center text on mobile */
+    margin: 10px 0; /* Space between sections */
+  }
+}

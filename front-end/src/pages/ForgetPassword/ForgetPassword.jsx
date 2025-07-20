@@ -1,39 +1,46 @@
-import React, { useState } from 'react';
-import './ForgetPassword.css';
-import { toast, ToastContainer } from 'react-toastify';
+import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email) {
-      toast.error('Please enter your email');
+      toast.error("Please enter your email");
       return;
     }
 
-    // BACKEND: Call API to send password reset email
     try {
-      // Placeholder: Replace with actual API call
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/users/forgot-password`, { email });
       toast.success("Reset link sent! Check your inbox.");
     } catch (err) {
-      toast.error("Something went wrong");
+      toast.error(err.response?.data?.message || "Something went wrong");
     }
   };
 
   return (
-    <div className="forgot-password-page">
-      <form className='forget-form' onSubmit={handleSubmit}>
-        <h2>Reset Your Password</h2>
+    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <form
+        className="bg-white p-4 rounded-4 shadow"
+        style={{ maxWidth: 400, width: "100%" }}
+        onSubmit={handleSubmit}
+      >
+        <h2 className="mb-4 text-center text-success fw-bold">
+          Reset Your Password
+        </h2>
         <input
-        className='forget-input'
+          className="form-control mb-3"
           type="email"
           placeholder="Enter your registered email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="submit" className='forget-btn'>Send Reset Link</button>
+        <button type="submit" className="btn btn-success w-100">
+          Send Reset Link
+        </button>
         <ToastContainer />
       </form>
     </div>

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const scooterSchema = new mongoose.Schema({
     qrCode: {
@@ -30,10 +30,7 @@ const scooterSchema = new mongoose.Schema({
     lastRentedAt: {
         type: Date,
     },
-    rentalPricePerMinute: {
-        type: Number,
-        required: true,
-    },
+
 });
 
 // Index for geospatial queries
@@ -78,4 +75,4 @@ scooterSchema.statics.updateBatteryLevel = async function (qrCode, batteryLevel)
 
 const Scooter = mongoose.model('Scooter', scooterSchema);
 
-module.exports = Scooter;
+export default Scooter;

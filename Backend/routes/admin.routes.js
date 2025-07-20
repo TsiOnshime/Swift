@@ -1,31 +1,21 @@
-const express = require("express");
+import express from 'express'
+import { body } from 'express-validator'
+import * as adminController from '../controllers/admin.controller.js'
+import * as authMiddleware from '../middlewares/auth.middleware.js'
+import { adminRegisterSchema, adminLoginSchema } from "../validators/admin.validator.js";
+import { validateBody } from "../middlewares/validate.middleware.js";
+
 const router = express.Router();
-const { body } = require("express-validator");
-const adminController = require("../controllers/admin.controller");
-const authMiddleware = require("../middlewares/auth.middleware");
 
 router.post(
   "/register",
-  [
-    body("email").isEmail().withMessage("Invalid Email"),
-    body("fullname.firstname")
-      .isLength({ min: 3 })
-      .withMessage("First name must be at least 3 characters long"),
-    body("password")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
-  ],
+  validateBody(adminRegisterSchema),
   adminController.registerAdmin
 );
 
 router.post(
   "/login",
-  [
-    body("email").isEmail().withMessage("Invalid Email"),
-    body("password")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
-  ],
+  validateBody(adminLoginSchema),
   adminController.loginAdmin
 );
 
@@ -65,4 +55,4 @@ router.patch(
   adminController.updateBatteryLevel
 );
 
-module.exports = router;
+export default router;

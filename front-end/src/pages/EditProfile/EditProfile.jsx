@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./EditProfile.css";
-import { FiArrowLeft, FiEyeOff } from "react-icons/fi";
+import { FiEyeOff } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { UserDataContext } from "../../context/UserContext";
 import axios from "axios";
@@ -19,7 +18,6 @@ const EditProfile = () => {
   const { user, setUser } = useContext(UserDataContext);
   const navigate = useNavigate();
 
-  // Pre-fill the form with user data
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -47,7 +45,7 @@ const EditProfile = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.put(
-        `${import.meta.env.VITE_BASE_URL}/users/edit-profile`,
+        `${import.meta.env.VITE_BASE_URL}/api/v1/users/edit-profile`,
         {
           fullname: {
             firstname: formData.firstname,
@@ -61,7 +59,8 @@ const EditProfile = () => {
           withCredentials: true,
         }
       );
-      setUser(res.data); // Update context with new user data
+      setUser(res.data);
+      localStorage.setItem("user", JSON.stringify(res.data));
       navigate("/profile");
     } catch (err) {
       alert("Failed to update profile");
@@ -69,99 +68,108 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="edit-profile-container">
-      <div className="header">
-        <FiArrowLeft className="back-icon" onClick={() => navigate(-1)} />
-        <h2>Edit Profile</h2>
-      </div>
-
-      <div className="form-card">
-        <div className="profile-section">
-          <img
-            src={selectedAvatar}
-            alt="User"
-            className="profile-pic"
-          />
-        </div>
-
-        <form className="form-fields" onSubmit={handleSave}>
-          <div className="form-group">
-            <label>First name</label>
-            <input
-              type="text"
-              name="firstname"
-              placeholder="Input first name"
-              value={formData.firstname}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Last name</label>
-            <input
-              type="text"
-              name="lastname"
-              placeholder="Input last name"
-              value={formData.lastname}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group full-width">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="example.email@gmail.com"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group full-width">
-            <label>Password</label>
-            <div className="password-input">
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter at least 8+ characters"
-                value={formData.password}
-                onChange={handleChange}
-                disabled
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-lg-7 col-md-9">
+          <div className="card shadow p-4">
+            <div className="d-flex flex-column align-items-center mb-4">
+              <img
+                src={selectedAvatar}
+                alt="User"
+                className="rounded-circle mb-2"
+                style={{
+                  width: 90,
+                  height: 90,
+                  objectFit: "cover",
+                  border: "3px solid #4caf50",
+                }}
               />
-              <FiEyeOff className="eye-icon" />
             </div>
+            <form onSubmit={handleSave}>
+              <div className="row g-3">
+                <div className="col-md-6">
+                  <label className="form-label">First name</label>
+                  <input
+                    type="text"
+                    name="firstname"
+                    className="form-control"
+                    placeholder="Input first name"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <label className="form-label">Last name</label>
+                  <input
+                    type="text"
+                    name="lastname"
+                    className="form-control"
+                    placeholder="Input last name"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="col-12">
+                  <label className="form-label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="example.email@gmail.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="col-12">
+                  <label className="form-label">Password</label>
+                  <div className="input-group">
+                    <input
+                      type="password"
+                      name="password"
+                      className="form-control"
+                      placeholder="Enter at least 8+ characters"
+                      value={formData.password}
+                      onChange={handleChange}
+                      disabled
+                    />
+                    <span className="input-group-text bg-white">
+                      <FiEyeOff />
+                    </span>
+                  </div>
+                </div>
+                <div className="col-12">
+                  <label className="form-label">Choose your avatar:</label>
+                  <div className="d-flex flex-wrap gap-2">
+                    {avatarList.map((avatar, idx) => (
+                      <img
+                        key={idx}
+                        src={avatar}
+                        alt={`avatar-${idx}`}
+                        className={`rounded-circle border ${
+                          selectedAvatar === avatar
+                            ? "border-success border-3"
+                            : "border-2"
+                        }`}
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          cursor: "pointer",
+                          objectFit: "cover",
+                        }}
+                        onClick={() => setSelectedAvatar(avatar)}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="col-12 d-flex justify-content-center mt-4">
+                  <button className="btn btn-success px-4" type="submit">
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-
-          <div className="avatar-selection">
-            <label>Choose your avatar:</label>
-            <div className="avatar-list">
-              {avatarList.map((avatar, idx) => (
-                <img
-                  key={idx}
-                  src={avatar}
-                  alt={`avatar-${idx}`}
-                  className={`avatar-img ${selectedAvatar === avatar ? "selected" : ""}`}
-                  onClick={() => setSelectedAvatar(avatar)}
-                  style={{
-                    border: selectedAvatar === avatar ? "2px solid #4caf50" : "2px solid transparent",
-                    borderRadius: "50%",
-                    width: "60px",
-                    height: "60px",
-                    cursor: "pointer",
-                    margin: "0 8px"
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="save-btn-wrapper">
-            <button className="save-btn" type="submit">
-              Save Changes
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );

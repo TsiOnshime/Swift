@@ -57,7 +57,7 @@ const MapPage = () => {
   // Fetch available scooters from backend
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BASE_URL}/scooters`)
+      .get(`${import.meta.env.VITE_BASE_URL}/api/v1/scooters`)
       .then(res => setScooters(res.data))
       .catch(() => setScooters([]));
   }, []);
@@ -118,8 +118,7 @@ const MapPage = () => {
             }}
           >
             <Popup>
-              <b>QR:</b> {scooter.qrCode}
-              <br />
+              
               <b>Battery:</b> {scooter.batteryLevel}%
               <br />
               <b>Price/min:</b> {scooter.rentalPricePerMinute} ETB

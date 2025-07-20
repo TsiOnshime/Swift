@@ -1,7 +1,7 @@
 // Description: This file contains the service functions for managing scooters.
-const Scooter = require("../models/scooter.model");
+import Scooter from '../models/scooter.model.js'
 
-module.exports.findAvailableScooters = async (lng, lat, maxDistance) => {
+export const findAvailableScooters = async (lng, lat, maxDistance) => {
   if (lng && lat && maxDistance) {
     return Scooter.findAvailableScooters(
       [parseFloat(lng), parseFloat(lat)],
@@ -11,18 +11,18 @@ module.exports.findAvailableScooters = async (lng, lat, maxDistance) => {
   return Scooter.find({ isAvailable: true });
 };
 
-module.exports.getScooterById = async (id) => {
+export const getScooterById = async (id) => {
   return Scooter.findById(id);
 };
 
-module.exports.rentScooter = async (qrCode, userId) => {
+export const rentScooter = async (qrCode, userId) => {
   const scooter = await Scooter.findOne({ qrCode, isAvailable: true });
   if (!scooter) throw new Error("Scooter not available");
   await scooter.markAsRented();
   return scooter;
 };
 
-module.exports.returnScooter = async (qrCode, userId, lng, lat) => {
+export const returnScooter = async (qrCode, userId, lng, lat) => {
   const scooter = await Scooter.findOne({ qrCode, isAvailable: false });
   if (!scooter) throw new Error("Scooter not found or not rented");
   const newLocation =
