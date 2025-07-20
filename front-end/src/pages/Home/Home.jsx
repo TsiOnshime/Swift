@@ -2,7 +2,7 @@ import React from "react";
 import { FaQrcode } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import "bootstrap/dist/css/bootstrap.min.css";
