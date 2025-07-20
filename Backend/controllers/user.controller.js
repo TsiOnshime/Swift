@@ -2,7 +2,7 @@ import crypto from "crypto";
 import userModel from "../models/user.model.js";
 import mailjet from "node-mailjet";
 import * as userService from "../services/user.service.js";
-import blackListTokenModel from "../models/blackListToken.model.js";
+import blackListTokenModel from "../models/blacklistToken.model.js"
 import { rewardUser } from "../services/reward.service.js";
 
 export const registerUser = async (req, res, next) => {
